@@ -230,8 +230,7 @@ body.cch-lock-scroll {
 /* Popout base */
 #cch-popout {
   position: fixed;
-  inset: var(--cch-adminbar-h, 32px) 0 0 0;
-  inset: 0 !important; 
+  inset: var(--cch-adminbar-h, 56px) 0 0 0;
   background: rgba(16, 21, 23, 0.98);
   backdrop-filter: blur(2px);
   display: none;
