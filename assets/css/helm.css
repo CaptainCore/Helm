@@ -1,0 +1,1065 @@
+/* CaptainCore Helm – CSS */
+
+#wpwrap {
+  max-width: 1400px;
+  margin: auto;
+}
+
+#wpadminbar > div {
+  width: 100%;
+}
+
+/* 1. Main Container */
+#wpadminbar {
+    margin: 0 auto !important; /* Center the bar */
+
+    /* Subtle Depth and Border */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.05);
+    border: none !important;
+
+    /* Dynamic Height */
+    height: auto;
+    min-height: 56px;
+}
+
+#wpadminbar li#wp-admin-bar-comments {
+    display: none;
+}
+
+/* 2. Inner Toolbar Layout */
+#wp-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    height: 100%;
+    min-height: 56px;
+}
+
+/* 3. All Toolbar Items */
+#wpadminbar .ab-item {
+    background: transparent !important;
+    color: #1e2125;
+    height: auto;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* 4. Item Hover & Focus States */
+#wpadminbar .ab-item:hover,
+#wpadminbar .ab-item:focus,
+#wpadminbar .menupop:hover > .ab-item {
+    color: #000;
+    background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* 5. Icons and Avatar */
+#wp-admin-bar-cch-popout-toggle .dashicons-menu-alt {
+    font-size: 22px;
+    vertical-align: middle;
+}
+
+#wpadminbar #wp-admin-bar-my-account img.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.05);
+}
+
+/* 6. Dropdown Menus */
+#wpadminbar .ab-sub-wrapper {
+    margin-top: 8px;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border: none;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+#wpadminbar .ab-submenu .ab-item {
+    color: #333;
+}
+
+#wpadminbar .ab-submenu .ab-item:hover {
+    color: #000;
+}
+
+#wpadminbar .ab-top-secondary {
+    margin-right: 2em;
+}
+
+/* 7. Adjust body padding to prevent content from hiding behind the bar */
+body.admin-bar {
+    padding-top: 24px;
+}
+
+.woocommerce-layout__header {
+    top: 56px !important;
+}
+
+/* 8. Mobile Responsiveness */
+@media screen and (max-width: 782px) {
+    /* On mobile, revert to a standard full-width bar */
+    #wpadminbar {
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        border-radius: 0;
+    }
+
+    /* Adjust body padding for the standard mobile admin bar height */
+    body.admin-bar {
+        padding-top: 46px;
+    }
+}
+
+#customize-controls, .preview-desktop #customize-preview {
+  margin-top: 56px !important;
+}
+
+#editor .edit-post-layout__metaboxes {
+  margin: auto;
+  width: 100%;
+  max-width: 1400px;
+}
+
+.edit-site {
+    margin-top: 56px !important;
+}
+
+.interface-interface-skeleton {
+    top: 56px !important;
+}
+
+/* When the left admin menu is hidden, let the editor use full width */
+body.cch-hide-admin-menu .interface-interface-skeleton {
+  left: 0 !important;
+}
+
+/* RTL: reset the flipped property too */
+[dir="rtl"] body.cch-hide-admin-menu .interface-interface-skeleton {
+  right: 0 !important;
+  left: auto !important;
+}
+
+body.cch-hide-admin-menu.auto-fold .interface-interface-skeleton,
+body.cch-hide-admin-menu.folded .interface-interface-skeleton {
+  left: 0 !important;
+}
+
+/* Keyboard shortcut badge next to Menu */
+#wp-admin-bar-cch-popout-toggle .cch-kbd {
+  margin-left: 8px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  border: 1px solid #565c61;
+  background: #1d2327;
+  color: #c3c4c7;
+  font-size: 14px;
+  line-height: 1.8;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  vertical-align: middle;
+  opacity: 0.9;
+}
+
+#wp-admin-bar-cch-popout-toggle .ab-item:hover .cch-kbd {
+  border-color: #72aee6;
+  color: #ffffff;
+}
+
+#wp-admin-bar-site-name > .ab-item::before,
+#wp-admin-bar-edit > .ab-item::before {
+  font-size: 20px;
+}
+
+#wp-admin-bar-new-content > .ab-item {
+  padding: 0 7px;
+}
+
+.admin-bar {
+    --admin-bar: 0px !important;
+}
+
+/* Don’t crowd on narrow screens */
+@media (max-width: 782px) {
+  #wp-admin-bar-cch-popout-toggle .cch-kbd {
+    display: none;
+  }
+}
+
+/* Hide the left admin menu and reclaim space (when class is on body) */
+body.cch-hide-admin-menu #adminmenumain,
+body.cch-hide-admin-menu #adminmenuwrap,
+body.cch-hide-admin-menu #adminmenuback {
+  display: none !important;
+}
+body.cch-hide-admin-menu #wpcontent,
+body.cch-hide-admin-menu #wpfooter {
+  margin-left: 0 !important;
+}
+
+/* Optionally hide toolbar extras we "moved" */
+body.cch-compact-toolbar #wpadminbar li.cch-hidden-toolbar {
+  display: none !important;
+}
+
+body.cch-lock-scroll {
+  overflow: hidden;
+}
+
+/* Adminbar toggle */
+#wp-admin-bar-cch-popout-toggle > .ab-item {
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Add dashicon before "Menu" label */
+#wp-admin-bar-cch-popout-toggle .ab-item .dashicons {
+  margin-right: 1px;
+  line-height: 1;
+  vertical-align: -4px;
+  font-family: dashicons;
+  font-size: 18px;
+}
+
+/* Popout base */
+#cch-popout {
+  position: fixed;
+  inset: var(--cch-adminbar-h, 32px) 0 0 0;
+  inset: 0 !important; 
+  background: rgba(16, 21, 23, 0.98);
+  backdrop-filter: blur(2px);
+  display: none;
+  color: #fff;
+  overflow-y: auto;
+  z-index: 999999;
+  font-size: 15px !important;
+}
+
+#cch-popout[aria-hidden="false"] {
+  display: block;
+  animation: cchFade 120ms ease-out;
+}
+
+@keyframes cchFade {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cch-popout-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 16px 24px 440px;
+  box-sizing: content-box;
+}
+
+/* Header */
+.cch-popout-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+#cch-popout-title {
+  font-size: 16px;
+  margin: 0;
+  color: #c3c4c7;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+#cch-popout-search {
+  flex: 1;
+  min-width: 260px;
+  max-width: 520px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #3b3f43;
+  background: #1d2327;
+  color: #fff;
+}
+
+input#cch-popout-search::placeholder {
+  color: #c3c4c7;
+}
+
+.cch-close {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #565c61;
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+  line-height: 1em;
+}
+
+/* Help overlay */
+#cch-help {
+  position: fixed;
+  inset: 0px;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  z-index: 1000000;
+}
+
+#cch-help[aria-hidden="false"] {
+  display: block;
+  animation: cchFade 120ms ease-out;
+}
+
+.cch-help-panel {
+  max-width: 560px;
+  margin: 48px auto;
+  background: #1b2024;
+  border: 1px solid #2c3338;
+  border-radius: 12px;
+  color: #fff;
+  padding: 16px 18px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+}
+
+.cch-help-panel h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  color: #c3c4c7;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.cch-help-list {
+  margin: 8px 0 12px;
+  padding-left: 18px;
+  color: #c3c4c7;
+}
+
+.cch-help-close {
+  display: inline-block;
+  background: #2271b1;
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.cch-popout-header .cch-help {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #565c61;
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-weight: 700;
+  line-height: 1;
+  margin-left: auto;
+  line-height: 1em;
+}
+
+/* View toggle (Cards | Expanded) */
+.cch-view-toggle {
+  display: inline-flex;
+  gap: 6px;
+  border: 1px solid #3b3f43;
+  border-radius: 8px;
+  padding: 2px;
+  background: #1d2327;
+}
+.cch-view-toggle button {
+  appearance: none;
+  background: transparent;
+  color: #c3c4c7;
+  border: 0;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  line-height: 1em;
+}
+.cch-view-toggle button.is-selected {
+  background: #2271b1;
+  color: #fff;
+}
+
+/* Style for the external link icon */
+.cch-external-link-icon {
+  font-size: 14px;
+  line-height: 1;
+  vertical-align: text-top;
+  margin-left: 6px;
+  opacity: 0.65;
+  transition: opacity 0.2s ease;
+}
+
+/* Make icon more visible on hover */
+a:hover .cch-external-link-icon {
+  opacity: 1;
+}
+
+/* Suppress hover highlight while keyboard navigation is active */
+#cch-popout.cch-keynav .cch-card:hover:not(.cch-active) {
+  border-color: #2c3338;
+  box-shadow: none;
+}
+
+/* Sections and grids */
+.cch-section {
+  margin-top: 14px;
+}
+
+.cch-section h3 {
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #a7aaad;
+  margin: 10px 0 8px;
+}
+
+.cch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+/* Cards */
+.cch-card {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  column-gap: 12px;
+  align-items: start;
+  padding: 12px;
+  border: 1px solid #2c3338;
+  background: #1b2024;
+  border-radius: 12px;
+  color: #fff;
+  text-decoration: none;
+  min-height: 64px;
+  position: relative;
+  z-index: 0;
+}
+
+a.cch-card,
+a.cch-card:hover,
+a.cch-card:focus,
+a.cch-card:visited {
+  color: #fff;
+  line-height: 1.2em;
+  box-sizing: content-box;
+}
+
+.cch-card:hover,
+.cch-card:focus {
+  border-color: #72aee6;
+  box-shadow: 0 0 0 2px #72aee6 inset;
+  outline: none;
+}
+
+.cch-card.cch-active {
+  border-color: #72aee6;
+  box-shadow: 0 0 0 2px #72aee6 inset;
+  outline: none;
+  z-index: 10;
+}
+
+.cch-card:hover,
+.cch-card:focus-within,
+.cch-card.cch-active {
+  z-index: 10;
+}
+
+.cch-icon {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  background-color: #2c3338;
+  overflow: hidden;
+}
+
+/* Dashicons support when we copy classes */
+.cch-icon.dashicons-before::before {
+  font-family: dashicons;
+  speak: never;
+  font-size: 18px;
+  line-height: 1;
+  color: #c3c4c7;
+}
+
+/* Card text */
+.cch-label {
+  font-weight: 600;
+  margin: 2px 0 2px;
+}
+
+.cch-meta {
+  font-size: 12px;
+  color: #9aa0a6;
+}
+
+/* Submenu popover (Cards view) */
+.cch-submenu {
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  display: none;
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 100%;
+  background: #101417;
+  border: 1px solid #2c3338;
+  border-radius: 10px;
+  z-index: 2;
+  max-height: 320px;
+  overflow: auto;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+}
+
+.cch-card:hover .cch-submenu,
+.cch-card:focus-within .cch-submenu,
+.cch-card.cch-sub-open .cch-submenu {
+  display: block;
+}
+
+.cch-submenu a,
+.cch-submenu a:visited,
+.cch-submenu a:active,
+.cch-submenu a:focus {
+  display: block;
+  padding: 6px 8px;
+  border-radius: 6px;
+  color: #c3c4c7;
+  text-decoration: none;
+}
+
+.cch-submenu a:hover,
+.cch-submenu a.cch-sub-active {
+  background: #1d2327;
+  color: #fff;
+}
+
+/* Search state: dim non-matches and highlight matches */
+#cch-popout.cch-has-query .cch-card.cch-dim {
+  display: none;
+}
+
+#cch-popout.cch-has-query .cch-submenu a.cch-dim {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+#cch-popout mark.cch-hl {
+  background: #315a8c;
+  color: #fff;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+/* Hide whole sections when flagged as empty during a query */
+#cch-popout .cch-section.cch-hidden {
+  display: none !important;
+}
+
+/* Hide an entire section when flagged by JS (cards + heading) */
+#cch-popout .cch-section.cch-hidden {
+  display: none !important;
+}
+
+/* ACF: prevent link highlight on cards */
+.acf-admin-page a.cch-card {
+  color: #fff !important;
+}
+
+/* Smush Pro: remove left gutter when Helm hides the admin menu */
+body.cch-hide-admin-menu.toplevel_page_smush
+  .sui-2-12-23
+  .sui-floating-notices,
+body.cch-hide-admin-menu.toplevel_page_smush
+  .sui-wrap
+  .sui-floating-notices {
+  left: 0 !important;
+}
+
+body.cch-hide-admin-menu.toplevel_page_smush .sui-2-12-23 .sui-modal,
+body.cch-hide-admin-menu.toplevel_page_smush .sui-wrap .sui-modal {
+  left: 0 !important;
+  width: 100% !important;
+}
+
+/* Small screens: respect taller adminbar */
+@media (max-width: 782px) {
+  #cch-popout {
+    inset: var(--cch-adminbar-h, 46px) 0 0 0;
+  }
+  .cch-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  body.cch-hide-admin-menu.toplevel_page_smush .sui-2-12-23 .sui-modal,
+  body.cch-hide-admin-menu.toplevel_page_smush .sui-wrap .sui-modal {
+    top: 46px;
+    height: calc(100vh - 46px);
+  }
+}
+
+/* Mobile-friendly header for the popout */
+@media (max-width: 640px) {
+  #cch-popout .cch-popout-header {
+    /* Switch from flex to grid */
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "title close"
+      "search search"
+      "toggle toggle";
+    gap: 8px;
+
+    /* Keep the header visible and readable when scrolling */
+    position: sticky;
+    top: 0;
+    background: rgba(16, 21, 23, 0.98);
+    backdrop-filter: blur(2px);
+    padding-block: 8px;
+    z-index: 5;
+  }
+
+  /* Areas */
+  #cch-popout-title {
+    grid-area: title;
+    margin: 0;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #c3c4c7;
+  }
+
+  #cch-popout-search {
+    grid-area: search;
+    width: 100%;
+    min-height: 40px; /* comfortable tap target */
+    font-size: 16px; /* prevents iOS zoom-on-focus */
+    padding: 10px 12px;
+  }
+
+  #cch-popout .cch-view-toggle {
+    grid-area: toggle;
+    width: 100%;
+    display: flex;
+    gap: 6px;
+    justify-content: stretch;
+  }
+
+  #cch-popout .cch-view-toggle button {
+    flex: 1 1 50%;
+    min-width: 0;
+    padding: 10px;
+  }
+
+  /* Compact Close button (icon-only, keeps aria-label) */
+  #cch-popout .cch-close {
+    grid-area: close;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0; /* hide text, keep accessible label */
+    border-radius: 8px;
+  }
+  #cch-popout .cch-close::before {
+    content: "✕";
+    font-size: 16px;
+    line-height: 1;
+  }
+}
+
+/* ========== Expanded View (always show all sub-items) ========== */
+
+/* Single multi-column flow for all cards */
+#cch-popout.cch-view-expanded .cch-sections {
+  column-width: 280px;
+  column-gap: 12px;
+}
+
+@media (max-width: 1200px) {
+  #cch-popout.cch-view-expanded .cch-sections {
+    column-width: 260px;
+  }
+}
+@media (max-width: 782px) {
+  #cch-popout.cch-view-expanded .cch-sections {
+    column-width: 220px;
+  }
+}
+
+/* Flatten wrappers so only cards participate in the columns */
+#cch-popout.cch-view-expanded .cch-section,
+#cch-popout.cch-view-expanded .cch-grid {
+  display: contents;
+}
+
+/* Hide section headings in Expanded */
+#cch-popout.cch-view-expanded .cch-section h3 {
+  display: none;
+}
+
+/* Cards become masonry items */
+#cch-popout.cch-view-expanded .cch-card {
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 12px 0;
+  vertical-align: top;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+
+  /* Visuals */
+  background: #1e2429;
+  border-color: #2f363c;
+  box-shadow: none;
+  transition: background 120ms ease, border-color 120ms ease,
+    box-shadow 120ms ease;
+}
+
+#cch-popout.cch-view-expanded .cch-card:hover {
+  background: #252c32;
+  border-color: #3d4852;
+}
+
+#cch-popout.cch-view-expanded .cch-card.cch-active {
+  background: #1b2a36;
+  border-color: #72aee6;
+  box-shadow: 0 0 0 2px #72aee6 inset;
+}
+
+/* Tone down hover ring when not active */
+#cch-popout.cch-view-expanded .cch-card:hover:not(.cch-active) {
+  box-shadow: none;
+  border-color: #2c3338;
+}
+
+/* Submenu becomes an inline list under the card */
+#cch-popout.cch-view-expanded .cch-submenu {
+  position: static;
+  display: block;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 6px 0 0 0;
+  box-shadow: none;
+  max-height: none;
+  overflow: visible;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* full-width rows */
+  gap: 2px;
+}
+
+/* Full-width, menu-like rows */
+#cch-popout.cch-view-expanded .cch-submenu a {
+  display: block;
+  padding: 6px 8px;
+  border-radius: 6px;
+  background: transparent;
+  white-space: nowrap;
+  color: #c3c4c7;
+  text-decoration: none;
+  transition: background 120ms ease, color 120ms ease,
+    box-shadow 120ms ease;
+}
+
+/* Hover/selected state with left accent bar */
+#cch-popout.cch-view-expanded .cch-submenu a:hover,
+#cch-popout.cch-view-expanded .cch-submenu a.cch-sub-active {
+  background: #2a3238;
+  color: #ffffff;
+}
+
+/* Optional: hide the meta line under titles in Expanded */
+#cch-popout.cch-view-expanded .cch-meta {
+  display: none;
+}
+
+/* Expanded: container columns + a little inner padding */
+#cch-popout.cch-view-expanded .cch-sections {
+  column-width: 280px;
+  column-gap: 16px; /* slightly wider column gutter */
+  padding: 0px; /* padding around the whole multi-column area */
+}
+
+/* Flatten wrappers */
+#cch-popout.cch-view-expanded .cch-section,
+#cch-popout.cch-view-expanded .cch-grid {
+  display: contents;
+}
+
+/* Cards as block items with side gutters (prevents visual overlap) */
+#cch-popout.cch-view-expanded .cch-card {
+  display: block; /* no need for inline-block in columns */
+  box-sizing: border-box;
+  margin: 0 8px 14px 0px; /* left/right "padding" inside each column */
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+
+  background: #1e2429;
+  border-color: #2f363c;
+  box-shadow: none;
+}
+
+/* Keep the hover/active styling but don’t “float” over neighbors */
+#cch-popout.cch-view-expanded .cch-card:hover {
+  background: #252c32;
+  border-color: #3d4852;
+}
+#cch-popout.cch-view-expanded .cch-card.cch-active {
+  background: #1b2a36;
+  border-color: #72aee6;
+  box-shadow: 0 0 0 2px #72aee6 inset;
+}
+
+/* Optional: neutralize any elevation from the base style in Expanded mode */
+#cch-popout.cch-view-expanded .cch-card:hover,
+#cch-popout.cch-view-expanded .cch-card:focus-within,
+#cch-popout.cch-view-expanded .cch-card.cch-active {
+  z-index: 0; /* no stacking jump needed in Expanded */
+}
+
+/* =================== Option A overrides (icon right) =================== */
+
+/* Place icon on the right, content on the left, submenu full width */
+#cch-popout.cch-view-expanded .cch-card {
+  display: grid; /* override block from expanded */
+  grid-template-columns: 1fr 28px;
+  grid-template-areas:
+    "content icon"
+    "submenu submenu";
+  column-gap: 10px;
+  row-gap: 6px;
+}
+
+#cch-popout.cch-view-expanded .cch-card > div:nth-of-type(1) {
+  grid-area: content;
+}
+
+#cch-popout.cch-view-expanded .cch-icon {
+  grid-area: icon;
+  width: 24px;
+  height: 24px;
+  justify-self: end; /* inline-end, RTL-friendly */
+  align-self: start;
+  background-color: transparent;
+  opacity: 0.9;
+}
+
+#cch-popout.cch-view-expanded .cch-submenu {
+  grid-area: submenu;
+}
+
+/* Slightly softer dashicon tone in Expanded */
+#cch-popout.cch-view-expanded .cch-icon.dashicons-before::before {
+  color: #b6bcc2;
+  font-size: 16px;
+}
+
+/* ===== Side Menu (left drawer) ===== */
+
+#cch-sidemenu {
+  position: fixed;
+  inset: var(--cch-adminbar-h, 32px) auto 0 0;
+  width: var(--cch-sidemenu-w, 280px);
+  background: #1b2024;
+  border-right: 1px solid #2c3338;
+  color: #fff;
+  z-index: 999997;
+  overflow: hidden; /* header + scroll area */
+  transform: translateX(-100%);
+  transition: transform 140ms ease-out;
+}
+#cch-sidemenu[aria-hidden="false"] {
+  transform: translateX(0);
+}
+
+.cch-side-header {
+  padding: 10px 12px;
+  background: #1d2327;
+  border-bottom: 1px solid #2c3338;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.cch-side-title {
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #a7aaad;
+}
+
+.cch-side-search {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #3b3f43;
+  background: #141a1f;
+  color: #fff;
+}
+
+.cch-side-scroll {
+  position: absolute;
+  top: calc(var(--cch-adminbar-h, 32px) + 56px); /* header approx 56px */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+  padding: 10px 8px 16px;
+}
+
+.cch-side-section {
+  margin: 6px 0 10px;
+}
+.cch-side-section-title {
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #a7aaad;
+  padding: 6px 8px;
+}
+
+.cch-side-list {
+  display: grid;
+  gap: 6px;
+  padding: 0 4px;
+}
+
+.cch-side-group {
+  border: 1px solid #2c3338;
+  border-radius: 10px;
+  background: #1e2429;
+  overflow: hidden;
+}
+
+.cch-side-head {
+  display: grid;
+  grid-template-columns: 24px 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  color: #fff;
+  text-decoration: none;
+}
+.cch-side-head:hover {
+  background: #252c32;
+}
+
+.cch-side-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background-color: #2c3338;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.cch-side-icon.dashicons-before::before {
+  font-family: dashicons;
+  font-size: 16px;
+  line-height: 1;
+  color: #c3c4c7;
+}
+
+.cch-side-label {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cch-side-meta {
+  font-size: 11px;
+  color: #9aa0a6;
+  white-space: nowrap;
+}
+
+.cch-side-subs {
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  display: none;
+}
+.cch-side-group.is-open .cch-side-subs {
+  display: block;
+}
+.cch-side-subs a {
+  display: block;
+  padding: 6px 8px;
+  border-radius: 6px;
+  color: #c3c4c7;
+  text-decoration: none;
+}
+.cch-side-subs a:hover {
+  background: #2a3238;
+  color: #fff;
+}
+
+/* Floating toggle button (top-left, below admin bar) */
+.cch-sidemenu-toggle {
+  position: fixed;
+  top: calc(var(--cch-adminbar-h, 32px) + 8px);
+  left: 8px;
+  z-index: 1000000;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid #3b3f43;
+  background: #1d2327;
+  color: #fff;
+  display: none; /* only show when Helm + sidemenu are enabled */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.cch-sidemenu-toggle .dashicons {
+  font-size: 18px;
+  line-height: 1;
+}
+body.cch-has-sidemenu .cch-sidemenu-toggle {
+  display: inline-flex;
+}
+@media (max-width: 782px) {
+  .cch-sidemenu-toggle {
+    top: calc(var(--cch-adminbar-h, 46px) + 6px);
+  }
+}
+
+/* Push admin content right when sidemenu is open (admin screens) */
+body.wp-admin.cch-sidemenu-open #wpcontent,
+body.wp-admin.cch-sidemenu-open #wpfooter {
+  margin-left: var(--cch-sidemenu-w, 280px) !important;
+}
+body.wp-admin.cch-sidemenu-open .interface-interface-skeleton {
+  left: var(--cch-sidemenu-w, 280px) !important;
+}
+/* RTL correction */
+[dir="rtl"] body.wp-admin.cch-sidemenu-open .interface-interface-skeleton {
+  right: var(--cch-sidemenu-w, 280px) !important;
+  left: auto !important;
+}
