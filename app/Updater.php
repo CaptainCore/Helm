@@ -121,22 +121,31 @@ class Updater {
             return $transient;
         }
 
-        $remote          = $this->request();
+        $remote = $this->request();
+
+        // If the remote request fails, return the original transient to avoid errors.
+        if ( ! $remote ) {
+            return $transient;
+        }
+
         $response        = new \stdClass();
         $response->slug  = $this->plugin_slug;
         $response->plugin = "{$this->plugin_slug}/{$this->plugin_slug}.php";
         $response->tested = $remote->tested;
 
-        if ( $remote && version_compare( $this->version, $remote->version, '<' ) && version_compare( $remote->requires, get_bloginfo( 'version' ), '<=' ) && version_compare( $remote->requires_php, PHP_VERSION, '<' ) ) {
+        // Check if a new version is available and compatible.
+        if ( $remote && version_compare( $this->version, $remote->version, '<' ) && version_compare( $remote->requires, get_bloginfo( 'version' ), '<=' ) && version_compare( $remote->requires_php, PHP_VERSION, '<=' ) ) {
             $response->new_version = $remote->version;
             $response->package     = $remote->download_url;
             $transient->response[ $response->plugin ] = $response;
         } else {
+            // No update available. Add required properties to avoid WP-CLI warnings.
+            $response->new_version = $this->version;
+            $response->package     = '';
             $transient->no_update[ $response->plugin ] = $response;
         }
 
         return $transient;
-
     }
 
     public function purge( $upgrader, $options ) {
