@@ -11,7 +11,7 @@ class Updater {
     public function __construct() {
 
         $this->plugin_slug   = dirname ( plugin_basename( __DIR__ ) );
-        $this->version       = '0.1.0';
+        $this->version       = '0.2.0';
         $this->cache_key     = 'captaincore_helm_updater';
         $this->cache_allowed = false;
 

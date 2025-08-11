@@ -1,4 +1,19 @@
 # Changelog
+s
+## 0.2.0 - 2025-08-11
+
+### Added
+
+* **Admin Color Scheme Integration:** The Quick Menu and other UI elements now adapt to the user's selected WordPress admin color scheme for a more personalized and integrated experience. This is achieved by dynamically generating CSS variables based on the active scheme's colors.
+
+### Changed
+
+* **UI Styling:**
+    * The hover-state border color for the keyboard shortcut hint in the admin bar now uses the accent color from the user's admin theme.
+    * The selected view toggle button (`Cards` or `Expanded`) in the Quick Menu now uses the theme's accent color for its background.
+    * The main popout menu is now properly inset below the admin bar instead of covering the full screen.
+* **Code Optimization:**
+    * Removed a duplicate action hook for printing critical CSS on the frontend, streamlining asset loading.
 
 ## 0.1.0 - 2025-08-10
 
