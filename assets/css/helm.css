@@ -166,7 +166,7 @@ body.cch-hide-admin-menu.folded .interface-interface-skeleton {
 }
 
 #wp-admin-bar-cch-popout-toggle .ab-item:hover .cch-kbd {
-  border-color: #72aee6;
+  border-color: var(--cch-color-2);
   color: #ffffff;
 }
 
@@ -208,6 +208,11 @@ body.cch-compact-toolbar #wpadminbar li.cch-hidden-toolbar {
 
 body.cch-lock-scroll {
   overflow: hidden;
+}
+
+/* When popout is open, hide adminbar dropdowns to prevent z-index issues */
+body.cch-lock-scroll #wpadminbar .ab-sub-wrapper {
+  visibility: hidden !important;
 }
 
 /* Adminbar toggle */
@@ -346,7 +351,7 @@ input#cch-popout-search::placeholder {
 
 .cch-help-close {
   display: inline-block;
-  background: #2271b1;
+  background: var(--cch-color-2);
   color: #fff;
   border: 0;
   border-radius: 8px;
@@ -389,7 +394,7 @@ input#cch-popout-search::placeholder {
   line-height: 1em;
 }
 .cch-view-toggle button.is-selected {
-  background: #2271b1;
+  background: var(--cch-color-2);
   color: #fff;
 }
 
@@ -461,14 +466,14 @@ a.cch-card:visited {
 
 .cch-card:hover,
 .cch-card:focus {
-  border-color: #72aee6;
-  box-shadow: 0 0 0 2px #72aee6 inset;
+  border-color: var(--cch-color-2);
+  box-shadow: 0 0 0 2px var(--cch-color-2) inset;
   outline: none;
 }
 
 .cch-card.cch-active {
-  border-color: #72aee6;
-  box-shadow: 0 0 0 2px #72aee6 inset;
+  border-color: var(--cch-color-2);
+  box-shadow: 0 0 0 2px var(--cch-color-2) inset;
   outline: none;
   z-index: 10;
 }
@@ -651,8 +656,10 @@ body.cch-hide-admin-menu.toplevel_page_smush .sui-wrap .sui-modal {
   #cch-popout-search {
     grid-area: search;
     width: 100%;
-    min-height: 40px; /* comfortable tap target */
-    font-size: 16px; /* prevents iOS zoom-on-focus */
+    min-height: 40px;
+    /* comfortable tap target */
+    font-size: 16px;
+    /* prevents iOS zoom-on-focus */
     padding: 10px 12px;
   }
 
@@ -679,7 +686,8 @@ body.cch-hide-admin-menu.toplevel_page_smush .sui-wrap .sui-modal {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 0; /* hide text, keep accessible label */
+    font-size: 0;
+    /* hide text, keep accessible label */
     border-radius: 8px;
   }
   #cch-popout .cch-close::before {
@@ -744,8 +752,8 @@ body.cch-hide-admin-menu.toplevel_page_smush .sui-wrap .sui-modal {
 
 #cch-popout.cch-view-expanded .cch-card.cch-active {
   background: #1b2a36;
-  border-color: #72aee6;
-  box-shadow: 0 0 0 2px #72aee6 inset;
+  border-color: var(--cch-color-2);
+  box-shadow: 0 0 0 2px var(--cch-color-2) inset;
 }
 
 /* Tone down hover ring when not active */
@@ -800,7 +808,8 @@ body.cch-hide-admin-menu.toplevel_page_smush .sui-wrap .sui-modal {
 /* Expanded: container columns + a little inner padding */
 #cch-popout.cch-view-expanded .cch-sections {
   column-width: 280px;
-  column-gap: 16px; /* slightly wider column gutter */
+  column-gap: 16px;
+  /* slightly wider column gutter */
   padding: 0px; /* padding around the whole multi-column area */
 }
 
@@ -812,9 +821,11 @@ body.cch-hide-admin-menu.toplevel_page_smush .sui-wrap .sui-modal {
 
 /* Cards as block items with side gutters (prevents visual overlap) */
 #cch-popout.cch-view-expanded .cch-card {
-  display: block; /* no need for inline-block in columns */
+  display: block;
+  /* no need for inline-block in columns */
   box-sizing: border-box;
-  margin: 0 8px 14px 0px; /* left/right "padding" inside each column */
+  margin: 0 8px 14px 0px;
+  /* left/right "padding" inside each column */
   break-inside: avoid;
   -webkit-column-break-inside: avoid;
   -moz-column-break-inside: avoid;
@@ -831,22 +842,24 @@ body.cch-hide-admin-menu.toplevel_page_smush .sui-wrap .sui-modal {
 }
 #cch-popout.cch-view-expanded .cch-card.cch-active {
   background: #1b2a36;
-  border-color: #72aee6;
-  box-shadow: 0 0 0 2px #72aee6 inset;
+  border-color: var(--cch-color-2);
+  box-shadow: 0 0 0 2px var(--cch-color-2) inset;
 }
 
 /* Optional: neutralize any elevation from the base style in Expanded mode */
 #cch-popout.cch-view-expanded .cch-card:hover,
 #cch-popout.cch-view-expanded .cch-card:focus-within,
 #cch-popout.cch-view-expanded .cch-card.cch-active {
-  z-index: 0; /* no stacking jump needed in Expanded */
+  z-index: 0;
+  /* no stacking jump needed in Expanded */
 }
 
 /* =================== Option A overrides (icon right) =================== */
 
 /* Place icon on the right, content on the left, submenu full width */
 #cch-popout.cch-view-expanded .cch-card {
-  display: grid; /* override block from expanded */
+  display: grid;
+  /* override block from expanded */
   grid-template-columns: 1fr 28px;
   grid-template-areas:
     "content icon"
@@ -863,7 +876,8 @@ body.cch-hide-admin-menu.toplevel_page_smush .sui-wrap .sui-modal {
   grid-area: icon;
   width: 24px;
   height: 24px;
-  justify-self: end; /* inline-end, RTL-friendly */
+  justify-self: end;
+  /* inline-end, RTL-friendly */
   align-self: start;
   background-color: transparent;
   opacity: 0.9;
@@ -889,7 +903,8 @@ body.cch-hide-admin-menu.toplevel_page_smush .sui-wrap .sui-modal {
   border-right: 1px solid #2c3338;
   color: #fff;
   z-index: 999997;
-  overflow: hidden; /* header + scroll area */
+  overflow: hidden;
+  /* header + scroll area */
   transform: translateX(-100%);
   transition: transform 140ms ease-out;
 }
@@ -924,7 +939,8 @@ body.cch-hide-admin-menu.toplevel_page_smush .sui-wrap .sui-modal {
 
 .cch-side-scroll {
   position: absolute;
-  top: calc(var(--cch-adminbar-h, 32px) + 56px); /* header approx 56px */
+  top: calc(var(--cch-adminbar-h, 32px) + 56px);
+  /* header approx 56px */
   bottom: 0;
   left: 0;
   right: 0;

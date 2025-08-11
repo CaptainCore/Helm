@@ -70,6 +70,14 @@ class Plugin
       20
     );
 
+    // Theme vars: print early so CSS can consume them
+    add_action('admin_head', [$this, 'printThemeVars'], 0);
+    add_action('wp_head', [$this, 'printThemeVarsFront'], 0);
+
+    // Critical CSS (already present)
+    add_action('admin_head', [$this, 'printCriticalCss'], 0);
+    add_action('wp_head',   [$this, 'printCriticalCssFront'], 0);
+
   }
 
   /* =========================== User preference ========================== */
@@ -1047,4 +1055,52 @@ JS;
   {
     return $this->isMacUa() ? '⌘⇧.' : 'Ctrl+Shift+.';
   }
+
+  /* ======================= Admin color scheme vars ======================= */
+
+  private function schemeColors(): array {
+  
+    // Pull the user's selected admin color scheme
+    $scheme = get_user_option('admin_color', get_current_user_id());
+    if (!$scheme) { $scheme = 'fresh'; }
+
+    // Access WP’s registered admin color schemes
+    global $_wp_admin_css_colors;
+    
+    $colors = []; // Initialize as an empty array
+    if (isset($_wp_admin_css_colors[$scheme]) && !empty($_wp_admin_css_colors[$scheme]->colors)) {
+      $colors = (array) $_wp_admin_css_colors[$scheme]->colors;
+    }
+    
+    return [
+      'raw'       => $colors, // Pass the original color array
+    ];
+  }
+
+  public function printThemeVars(): void {
+    if (!$this->isEnabled()) {
+      return;
+    }
+    $c = $this->schemeColors();
+    // Scope to body so frontend + admin both inherit safely.
+    $css = '<style id="cch-theme-vars">body{';
+
+    // Loop through the raw colors and create a CSS var for each
+    if (!empty($c['raw']) && is_array($c['raw'])) {
+        foreach ($c['raw'] as $index => $color) {
+            $css .= '--cch-color-' . intval($index) . ':' . esc_html(trim($color)) . ';';
+        }
+    }
+
+    $css .= '}</style>';
+    
+    echo $css;
+  }
+
+  public function printThemeVarsFront(): void {
+    if (!$this->isEnabled()) { return; }
+    if (!is_user_logged_in() || !is_admin_bar_showing()) { return; }
+    $this->printThemeVars();
+  }
+
 }
