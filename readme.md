@@ -17,13 +17,13 @@ Here's how Helm compares to the standard WordPress navigation across different a
 | Area | CaptainCore Helm | WP Admin Top Bar | WP Admin Sidebar |
 | --- | :---: | :---: | :---: |
 | **Frontend** | ✅ | ✅ | ❌ |
-| **Backend (wp-admin)** | ✅ | ✅ | ✅ |
-| **[Site Editor](https://wordpress.org/documentation/article/site-editor/)** | ✅ | ❌ | ❌ |
+| **Backend (`wp-admin`)** | ✅ | ✅ | ✅ |
 | **[Block Editor](https://wordpress.org/documentation/article/wordpress-block-editor/)** | ✅ | ✔️  | ✔️ |
 | **[Customizer](https://wordpress.org/documentation/article/customizer/)** | ✅ | ❌ | ❌ |
+| **[Site Editor](https://wordpress.org/documentation/article/site-editor/)** | ✅ | ❌ | ❌ |
 | **[Etch](https://etchwp.com)** | ✅ | ❌ | ❌ |
 
-\* By default the block editor is in fullscreen mode which doesn't show either of the WP Admin bars.
+\* By default the block editor is in fullscreen mode which hides the WP Admin bars.
 
 -----
 
