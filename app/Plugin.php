@@ -335,6 +335,7 @@ class Plugin
     return [
       'wp-admin-bar-cch-popout-toggle',
       'wp-admin-bar-edit',
+      'wp-admin-bar-new-content',
       'wp-admin-bar-menu-toggle',
     ];
   }
