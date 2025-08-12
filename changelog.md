@@ -1,5 +1,22 @@
 # Changelog
-s
+
+## 0.3.0 - 2025-08-12
+
+### Added
+
+* **Etch Editor Integration:** Helm now ensures the admin bar remains visible and functional within the Etch editor interface.
+* **Fallback Admin Color Schemes:** A set of default admin color schemes is now included within the plugin to ensure UI consistency even when WordPress's color scheme data is not available.
+
+### Changed
+
+* **Updater Versioning:** The plugin updater now dynamically uses the `CCHELM_VER` constant for the version number instead of a hardcoded value.
+* **Admin Bar Styling:** The admin bar background now uses the user's selected color scheme. Item hover and focus colors in the admin bar also adapt to the user's theme for better integration.
+
+### Fixed
+
+* **Updater Stability:** The updater is now more robust, preventing errors if the remote request for the manifest fails by returning the original transient data. It also adds required properties to the `no_update` transient to prevent warnings in WP-CLI.
+* **Admin Color Scheme Loading:** The plugin now proactively registers admin color schemes on the frontend if they haven't been loaded, ensuring custom colors are available outside of the admin area.
+
 ## 0.2.0 - 2025-08-11
 
 ### Added

@@ -2,7 +2,7 @@
 /**
  * Plugin Name:  CaptainCore Helm
  * Description:  Take the helm of your WordPress admin.
- * Version:      0.2.0
+ * Version:      0.3.0
  * Author:       CaptainCore
  * Author URI:   https://captaincore.io
  * License:      MIT License
@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) {
   exit;
 }
 
-define('CCHELM_VER', '0.2.0');
+define('CCHELM_VER', '0.3.0');
 define('CCHELM_FILE', __FILE__);
 define('CCHELM_DIR', plugin_dir_path(__FILE__));
 define('CCHELM_URL', plugin_dir_url(__FILE__));

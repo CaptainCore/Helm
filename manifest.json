@@ -4,13 +4,13 @@
     "author": "<a href=\"https://captaincore.io\">CaptainCore</a>",
     "author_profile": "https://captaincore.io",
     "donate_link": "https://github.com/sponsors/austinginder",
-    "version": "0.2.0",
-    "download_url": "https://github.com/CaptainCore/Helm/releases/download/v0.2.0/captaincore-helm.zip",
+    "version": "0.3.0",
+    "download_url": "https://github.com/CaptainCore/Helm/releases/download/v0.3.0/captaincore-helm.zip",
     "requires": "5.6",
     "tested": "6.8.2",
     "requires_php": "5.6",
     "added": "2025-08-10 16:00:00",
-    "last_updated": "2025-08-11 16:00:00",
+    "last_updated": "2025-08-12 16:00:00",
     "homepage": "https://captaincore.io/helm",
     "sections": {
         "description": "Take the helm of your WordPress admin."
