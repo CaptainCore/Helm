@@ -18,9 +18,10 @@ Here's how Helm compares to the standard WordPress navigation across different a
 | --- | :---: | :---: | :---: |
 | **Frontend** | ✅ | ✅ | ❌ |
 | **Backend (wp-admin)** | ✅ | ✅ | ✅ |
-| **Site Editor** | ✅ | ❌ | ❌ |
-| **Block Editor** | ✅ | ✔️  | ✔️ |
-| **Customizer** | ✅ | ❌ | ❌ |
+| **[Site Editor](https://wordpress.org/documentation/article/site-editor/)** | ✅ | ❌ | ❌ |
+| **[Block Editor](https://wordpress.org/documentation/article/wordpress-block-editor/)** | ✅ | ✔️  | ✔️ |
+| **[Customizer](https://wordpress.org/documentation/article/customizer/)** | ✅ | ❌ | ❌ |
+| **[Etch](https://etchwp.com)** | ✅ | ❌ | ❌ |
 
 \* By default the block editor is in fullscreen mode which doesn't show either of the WP Admin bars.
 

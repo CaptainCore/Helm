@@ -128,6 +128,10 @@ body.admin-bar {
   margin-top: 56px !important;
 }
 
+#etch-builder {
+  margin-top: 32px;
+}
+
 #editor .edit-post-layout__metaboxes {
   margin: auto;
   width: 100%;

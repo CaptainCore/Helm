@@ -70,6 +70,10 @@ class Plugin
       20
     );
 
+    // Etch integration hooks
+    add_filter('show_admin_bar', [$this, 'forceShowAdminBarInEtch'], 9999);
+    add_action('wp_enqueue_scripts', [$this, 'enqueueAssetsForEtch']);
+
     // Theme vars: print early so CSS can consume them
     add_action('admin_head', [$this, 'printThemeVars'], 0);
     add_action('wp_head', [$this, 'printThemeVarsFront'], 0);
@@ -964,6 +968,42 @@ JS;
 })(wp.customize);
 JS;
     wp_add_inline_script('customize-controls', $js);
+  }
+
+  /* ======================== Etch Editor Integration ======================= */
+
+  /**
+   * Forces the admin bar to be visible when the Etch editor is active.
+   *
+   * @param bool $show The current visibility status of the admin bar.
+   * @return bool True to show the admin bar, otherwise the original value.
+   */
+  public function forceShowAdminBarInEtch(bool $show): bool
+  {
+      if (isset($_GET['etch']) && $_GET['etch'] === 'magic') {
+          return true;
+      }
+      return $show;
+  }
+
+  /**
+   * Enqueues scripts required for the Helm admin bar in the Etch editor.
+   */
+  public function enqueueAssetsForEtch(): void
+  {
+      // Only run this logic when the Etch editor is active and the user has Helm enabled.
+      if (!isset($_GET['etch']) || $_GET['etch'] !== 'magic' || !$this->isEnabled()) {
+          return;
+      }
+
+      // Enqueue the core WordPress 'admin-bar' script to make the bar functional.
+      wp_enqueue_script('admin-bar');
+      wp_register_style( 'admin-bar-cch-helm', includes_url('css/admin-bar.min.css'), [], '1.0.0', 'all');
+      wp_enqueue_style( 'admin-bar-cch-helm' );
+
+      // Enqueue Helm's main JavaScript file.
+      wp_enqueue_script('cch-helm');
+
   }
 
   /* ============================== Utilities ============================= */
