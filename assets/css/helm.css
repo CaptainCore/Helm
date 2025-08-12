@@ -20,6 +20,15 @@
     /* Dynamic Height */
     height: auto;
     min-height: 56px;
+
+    background: var(--cch-color-1);
+}
+
+#wpadminbar .ab-top-menu>li.menupop.hover>.ab-item, #wpadminbar.nojq .quicklinks .ab-top-menu>li>.ab-item:focus, #wpadminbar.nojs .ab-top-menu>li.menupop:hover>.ab-item, #wpadminbar:not(.mobile) .ab-top-menu>li:hover>.ab-item, #wpadminbar:not(.mobile) .ab-top-menu>li>.ab-item:focus {
+    color: var(--cch-color-3);
+}
+#wpadminbar:not(.mobile) li:hover #adminbarsearch:before, #wpadminbar:not(.mobile) li:hover .ab-icon:before, #wpadminbar:not(.mobile) li:hover .ab-item:after, #wpadminbar:not(.mobile) li:hover .ab-item:before {
+    color: var(--cch-color-3);
 }
 
 #wpadminbar li#wp-admin-bar-comments {
@@ -170,7 +179,7 @@ body.cch-hide-admin-menu.folded .interface-interface-skeleton {
 }
 
 #wp-admin-bar-cch-popout-toggle .ab-item:hover .cch-kbd {
-  border-color: var(--cch-color-2);
+  border-color: var(--cch-color-3);
   color: #ffffff;
 }
 

@@ -1059,22 +1059,55 @@ JS;
   /* ======================= Admin color scheme vars ======================= */
 
   private function schemeColors(): array {
-  
-    // Pull the user's selected admin color scheme
-    $scheme = get_user_option('admin_color', get_current_user_id());
-    if (!$scheme) { $scheme = 'fresh'; }
+    // User’s selected admin color scheme slug (fallback to 'fresh').
+    $scheme = get_user_option('admin_color', get_current_user_id()) ?: 'fresh';
 
-    // Access WP’s registered admin color schemes
+    // Try to use the global admin color registry if present.
     global $_wp_admin_css_colors;
-    
-    $colors = []; // Initialize as an empty array
-    if (isset($_wp_admin_css_colors[$scheme]) && !empty($_wp_admin_css_colors[$scheme]->colors)) {
-      $colors = (array) $_wp_admin_css_colors[$scheme]->colors;
+
+    // On the frontend this is typically empty — populate it if we can.
+    if (empty($_wp_admin_css_colors) && function_exists('register_admin_color_schemes')) {
+        register_admin_color_schemes();
     }
-    
+
+    $colors = [];
+
+    // Use populated globals if available.
+    if (
+        isset($_wp_admin_css_colors[$scheme]) &&
+        !empty($_wp_admin_css_colors[$scheme]->colors) &&
+        is_array($_wp_admin_css_colors[$scheme]->colors)
+    ) {
+        $colors = (array) $_wp_admin_css_colors[$scheme]->colors;
+    } else {
+        // Fallback to a bundled default map (mirrors core).
+        $defaults = $this->defaultAdminColorSchemes();
+        if (isset($defaults[$scheme]) && is_array($defaults[$scheme])) {
+            $colors = $defaults[$scheme];
+        } else {
+            $colors = $defaults['fresh']; // ultimate fallback
+        }
+    }
+
     return [
-      'raw'       => $colors, // Pass the original color array
+        'raw' => $colors,
     ];
+  }
+
+  private function defaultAdminColorSchemes(): array {
+      // Mirrors the arrays from register_admin_color_schemes().
+      // Index 2 is used by Helm as the "accent" (var(--cch-color-2)).
+      return [
+          'fresh'     => ['#1d2327', '#2c3338', '#2271b1', '#72aee6'],
+          'light'     => ['#e5e5e5', '#999999', '#d64e07', '#04a4cc'],
+          'modern'    => ['#1e1e1e', '#3858e9', '#7b90ff'], // 3 colors in core
+          'blue'      => ['#096484', '#4796b3', '#52accc', '#74B6CE'],
+          'midnight'  => ['#25282b', '#363b3f', '#69a8bb', '#e14d43'],
+          'sunrise'   => ['#b43c38', '#cf4944', '#dd823b', '#ccaf0b'],
+          'ectoplasm' => ['#413256', '#523f6d', '#a3b745', '#d46f15'],
+          'ocean'     => ['#627c83', '#738e96', '#9ebaa0', '#aa9d88'],
+          'coffee'    => ['#46403c', '#59524c', '#c7a589', '#9ea476'],
+      ];
   }
 
   public function printThemeVars(): void {
