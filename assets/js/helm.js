@@ -1181,15 +1181,24 @@
                     e.__cchNavHandled = true;
                     e.preventDefault();
                     setKeyboardMode(true);
-                    if (activeCard) {
+                    // If nothing is active yet, just select the first visible card and stop.
+                    if (!activeCard) {
+                        const first = firstVisibleCard();
+                        if (first) {
+                            setActiveCard(first);
+                        }
+                    } else {
+                        // A card is already active, so decide where to move.
                         const subs = candidateSubs(activeCard, pop);
+                        // If the card has a submenu and we aren't in it, the next move is to enter it.
                         if (subs.length && activeSubIndex === -1) {
                             activeSubIndex = 0;
                             updateSubHighlight();
-                            return;
+                        } else {
+                            // Otherwise, perform a standard vertical move.
+                            moveVertical(+1);
                         }
                     }
-                    moveVertical(+1);
                     return;
                 }
             }
